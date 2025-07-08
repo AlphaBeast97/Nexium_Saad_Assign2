@@ -32,7 +32,7 @@ export function Form() {
       />
       <button
         type="submit"
-        className="w-full bg-primary text-primary-foreground py-2 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+        className="w-full bg-primary text-foreground dark:text-primary-foreground py-2 rounded-md font-semibold hover:bg-primary/90 transition-colors shadow-sm border border-primary/30"
       >
         Get Summary
       </button>

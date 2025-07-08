@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Link from "next/link";
 import { ThemeSelector } from "./ThemeSelector";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { useState } from "react";
 export function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <nav className="bg-background border-b border-border p-4 transition-colors">
+    <nav className="bg-card/80 backdrop-blur border-b border-border p-4 transition-colors">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-foreground text-lg font-bold">
           Blog Summarizer
@@ -33,8 +33,18 @@ export function NavBar() {
           onClick={() => setMenuOpen((open) => !open)}
           aria-label="Open menu"
         >
-          <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
         {/* Mobile dropdown menu */}
