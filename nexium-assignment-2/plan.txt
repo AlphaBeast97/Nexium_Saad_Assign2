@@ -1,0 +1,39 @@
+Assignment 2: Blog Summariser
+
+Detailed Plan:
+
+1. User Input: ✅
+   - [x] Create a form in the frontend (using ShadCN UI) to accept a blog URL from the user.
+   - [x] Validate the URL format before submission.
+
+2. Blog Scraping:
+   - On form submission, send the URL to a backend API route (Next.js API route).
+   - Use a scraping library (e.g., `cheerio` or `jsdom`) to fetch and extract the main text content from the blog page.
+   - Handle errors for invalid or unreachable URLs.
+
+3. Simulated AI Summary:
+   - Implement a static logic function to generate a summary (e.g., extract the first 3-5 sentences or a fixed summary template).
+   - Optionally, highlight key points or headings if available.
+
+4. Urdu Translation:
+   - Create a simple JavaScript dictionary for common English-to-Urdu word/phrase translations.
+   - Replace words/phrases in the summary using this dictionary.
+   - Ensure the translation logic handles basic grammar and sentence structure.
+
+5. Save Summary in Supabase:
+   - Set up a Supabase project and table for storing summaries (fields: id, url, summary_en, summary_ur, created_at).
+   - Use Supabase client in the backend to insert the summary data.
+
+6. Save Full Blog Text in MongoDB:
+   - Set up MongoDB (e.g., MongoDB Atlas) and create a collection for full blog texts (fields: id, url, full_text, created_at).
+   - Use a MongoDB client (e.g., `mongoose` or `mongodb` npm package) to save the full blog content.
+
+7. Frontend UI (ShadCN):
+   - Use ShadCN UI components for the form, loading states, and displaying results.
+   - Show both the English and Urdu summaries to the user after processing.
+   - Provide error messages and success notifications.
+
+8. Deployment:
+   - Prepare the app for deployment (set up environment variables for Supabase and MongoDB).
+   - Deploy the Next.js app to Vercel.
+   - Test the deployed app for all functionalities.
