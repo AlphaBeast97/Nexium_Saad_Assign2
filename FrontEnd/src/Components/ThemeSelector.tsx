@@ -18,8 +18,13 @@ export function ThemeSelector() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon" className="relative flex items-center gap-2 px-4 py-2 min-w-[100px]">
+          <Button
+            variant="outline"
+            size="icon"
+            className="relative flex items-center gap-2 px-4 py-2 min-w-[100px]"
+            >
             <span className="capitalize text-xs font-medium bg-muted text-muted-foreground rounded px-2 py-0.5 transition-colors">
+              suppressHydrationWarning={true}
               {theme}
             </span>
             <Sun className="h-[1.2rem] w-[1.2rem] ml-1 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
