@@ -1,7 +1,13 @@
 import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
 
 export const scrapeBlog = async (url) => {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    executablePath: executablePath || undefined,
+    headless: chromium.headless,
+    defaultViewport: chromium.defaultViewport,
+  });
   const page = await browser.newPage();
 
   try {

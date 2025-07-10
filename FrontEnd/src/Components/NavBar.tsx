@@ -32,6 +32,12 @@ export function NavBar() {
           >
             About
           </Link>
+          <Link
+            href="/explore"
+            className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium border border-border hover:bg-accent transition-colors"
+          >
+            Explore
+          </Link>
           <DynamicThemeSelector />
         </div>
         {/* Mobile menu button */}
@@ -70,6 +76,13 @@ export function NavBar() {
               onClick={() => setMenuOpen(false)}
             >
               About
+            </Link>
+            <Link
+              href="/explore"
+              className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium border border-border hover:bg-accent transition-colors mb-1"
+              onClick={() => setMenuOpen(false)}
+            >
+              Explore
             </Link>
             <div className="px-3 py-2 flex justify-center">
               <ThemeSelector />

@@ -1,6 +1,7 @@
 "use client";
 import toast from "react-hot-toast";
 import { Button } from "./ui/button";
+import { ExploreButton } from "./ExploreButton";
 import Link from "next/link";
 
 export function Form() {
@@ -34,13 +35,7 @@ export function Form() {
       <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
         <Button type="submit">Get Summary</Button>
         <Link href="/explore">
-          <Button
-            type="button"
-            variant={"link"}
-            className="w-full border-2 border-accent-foreground hover:bg-accent-foreground hover:text-background"
-          >
-            Explore!
-          </Button>
+          <ExploreButton>Explore!</ExploreButton>
         </Link>
       </div>
     </form>
