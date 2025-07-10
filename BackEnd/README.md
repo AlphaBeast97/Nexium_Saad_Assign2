@@ -71,7 +71,7 @@ The server will be running on `http://localhost:3001` (or the port specified in 
 
 #### 2. Get a Single Blog Summary
 
-- **URL:** `/api/blogs/:id`
+- **URL:** `/api/blogs/summary/:id`
 - **Method:** `GET`
 - **URL Parameters:**
   - `id=[string]` (Required): The ID of the blog post.
@@ -85,7 +85,7 @@ The server will be running on `http://localhost:3001` (or the port specified in 
 
 #### 1. Scrape and Save a New Blog Post
 
-- **URL:** `/api/scrape`
+- **URL:** `/api/scrape/url`
 - **Method:** `POST`
 - **Description:** Scrapes a blog post from a given URL, summarizes it, translates the summary, and saves it to the database. If the URL has already been scraped, it returns the existing data.
 - **Body:**
