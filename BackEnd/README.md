@@ -49,7 +49,7 @@ The server will be running on `http://localhost:3001` (or the port specified in 
 
 #### 1. Get All Blog Summaries
 
-- **URL:** `/api/blogs`
+- **URL:** `/api/blogs/summary`
 - **Method:** `GET`
 - **Description:** Retrieves a list of all saved blog summaries.
 - **Success Response (200 OK):**
