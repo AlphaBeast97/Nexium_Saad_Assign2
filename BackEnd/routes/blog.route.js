@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getBlog } from "../controllers/blog.controller.js";
+import { getAllSummaries, getOneSummary } from "../controllers/blog.controller.js";
 
 const router = Router();
 
-router.get("/:id", getBlog);
+router.get("/", getAllSummaries);
+router.get("/:id", getOneSummary);
 
 export default router;

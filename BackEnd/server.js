@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // API routes
-app.use("/api/blog", blogRoutes);
+app.use("/api/blog/summary", blogRoutes);
 app.use("/api/blog/scrape", scrapeRoute)
 
 // Root route
