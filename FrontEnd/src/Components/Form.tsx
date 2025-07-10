@@ -1,6 +1,7 @@
 "use client";
-
 import toast from "react-hot-toast";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export function Form() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,12 +31,18 @@ export function Form() {
         placeholder="https://example.com/blog-post"
         required
       />
-      <button
-        type="submit"
-        className="w-full bg-primary text-foreground dark:text-primary-foreground py-2 rounded-md font-semibold hover:bg-primary/90 transition-colors shadow-sm border border-primary/30"
-      >
-        Get Summary
-      </button>
+      <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
+        <Button type="submit">Get Summary</Button>
+        <Link href="/explore">
+          <Button
+            type="button"
+            variant={"link"}
+            className="w-full border-2 border-accent-foreground hover:bg-accent-foreground hover:text-background"
+          >
+            Explore!
+          </Button>
+        </Link>
+      </div>
     </form>
   );
 }

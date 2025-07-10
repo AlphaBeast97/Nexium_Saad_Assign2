@@ -6,9 +6,9 @@ export default function About() {
           About Us
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground text-center mb-6">
-          Welcome to our Blog Summarizer! We are dedicated to providing concise
-          and accurate summaries of the latest blog posts, helping you stay
-          informed without the hassle of reading lengthy articles.
+          Welcome to Blog Summarizer! Our mission is to simplify information
+          consumption by providing concise and accurate summaries of any blog
+          post URL you provide.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full justify-center mt-2">
           <a

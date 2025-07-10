@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
+import { Laptop, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/Components/ui/button";
@@ -19,8 +19,7 @@ export function ThemeSelector() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
-            variant="outline"
-            size="icon"
+            variant="outline"            
             className="relative flex items-center gap-2 px-4 py-2 min-w-[100px]"
           >
             <span
@@ -35,13 +34,16 @@ export function ThemeSelector() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => setTheme("light")}>
-            Light
+            <Sun className="mr-2 h-4 w-4" />
+            <span>Light</span>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setTheme("dark")}>
-            Dark
+            <Moon className="mr-2 h-4 w-4" />
+            <span>Dark</span>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setTheme("system")}>
-            System
+            <Laptop className="mr-2 h-4 w-4" />
+            <span>System</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

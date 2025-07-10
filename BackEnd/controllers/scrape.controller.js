@@ -15,7 +15,7 @@ export const scrapeAndSaveBlog = async (req, res) => {
     // If it exists, return the existing blog data
     if (existingBlog) {
       console.log(`URL already exists, returning existing blog: ${url}`);
-      return res.status(200).json(existingBlog);
+      return res.status(200).json({ id: existingBlog._id });
     }
 
     // If it doesn't exist, proceed with scraping
@@ -41,7 +41,7 @@ export const scrapeAndSaveBlog = async (req, res) => {
       summary,
       translation,
     });
-    res.status(201).json(newBlog);
+    res.status(201).json({ id: newBlog._id });
   } catch (error) {
     console.error("Error in scrapeAndSaveBlog:", error);
     res.status(500).json({
