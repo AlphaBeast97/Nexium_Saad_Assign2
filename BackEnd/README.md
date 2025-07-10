@@ -49,7 +49,7 @@ The server will be running on `http://localhost:3001` (or the port specified in 
 
 #### 1. Get All Blog Summaries
 
-- **URL:** `/api/blogs/summary`
+- **URL:** `/api/blog/summary`
 - **Method:** `GET`
 - **Description:** Retrieves a list of all saved blog summaries.
 - **Success Response (200 OK):**
@@ -71,7 +71,7 @@ The server will be running on `http://localhost:3001` (or the port specified in 
 
 #### 2. Get a Single Blog Summary
 
-- **URL:** `/api/blogs/summary/:id`
+- **URL:** `/api/blog/summary/:id`
 - **Method:** `GET`
 - **URL Parameters:**
   - `id=[string]` (Required): The ID of the blog post.
