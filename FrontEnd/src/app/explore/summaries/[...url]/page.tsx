@@ -12,6 +12,7 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/Components/ui/button";
 import SummaryToastClientWrapper from "@/Components/SummaryPageToast";
+import { CollapsibleBlogText } from "@/Components/CollapsableTextFeild";
 
 export const metadata = {
   title: "Nexium Assignment 2",
@@ -111,14 +112,7 @@ export default async function SummaryPage({
               </p>
             </div>
           )}
-          <div>
-            <h3 className="text-xl font-semibold mb-3 border-b pb-2">
-              Full Blog Text
-            </h3>
-            <p className="text-foreground/80 leading-relaxed whitespace-pre-wrap">
-              {summary.text || "No full blog text available."}
-            </p>
-          </div>
+         <CollapsibleBlogText text={summary.text}/>
         </CardContent>
 
         <CardFooter className="text-xs text-muted-foreground bg-muted/50 py-3 px-6 border-t flex justify-between flex-wrap gap-2">
