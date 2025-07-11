@@ -8,7 +8,7 @@ export const scrapeBlog = async (url) => {
   const page = await browser.newPage();
 
   try {
-    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 15000 });
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
 
     const result = await page.evaluate(() => {
       const title = document.querySelector("h1")?.innerText || "No Title Found";
