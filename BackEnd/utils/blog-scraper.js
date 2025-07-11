@@ -17,7 +17,12 @@ export const scrapeBlog = async (url) => {
         .filter(Boolean)
         .join("\n\n");
 
-      return { title, text: paragraphs };
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      const firstImageInArticle = document.querySelector("article img");
+      
+      const image = ogImage ? ogImage.content : (firstImageInArticle ? firstImageInArticle.src : null);
+
+      return { title, text: paragraphs, image };
     });
 
     return result;

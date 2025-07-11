@@ -20,7 +20,7 @@ export const scrapeAndSaveBlog = async (req, res) => {
 
     // If it doesn't exist, proceed with scraping
     console.log(`Scraping new URL: ${url}`);
-    const { title, text } = await scrapeBlog(url);
+    const { title, text, image } = await scrapeBlog(url);
 
     let summary = null;
     let translation = null;
@@ -36,6 +36,7 @@ export const scrapeAndSaveBlog = async (req, res) => {
     const newBlog = await Blog.create({
       title,
       text,
+      img: image, // Use the 'image' variable for the 'img' field
       url,
       user,
       summary,
