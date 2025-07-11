@@ -24,10 +24,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Blog API!");
 });
 
-app.get("*", (req, res) => {
-  res.status(404).json({ error: "Not found" });
-});
-
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
