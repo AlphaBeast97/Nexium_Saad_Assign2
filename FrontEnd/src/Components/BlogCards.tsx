@@ -69,7 +69,7 @@ export function BlogCards({ blogs }: BlogCardsProps) {
             </p>
           </CardContent>
           <CardFooter>
-              <Link href={`/summaries/view?url=${encodeURIComponent(blog.url)}&user=${encodeURIComponent(blog._id)}`} className="w-full">
+              <Link href={`explore/summaries/${encodeURIComponent(blog.url)}?user=${encodeURIComponent(blog._id)}`} className="w-full">
                 <Button className="w-full">View Summary</Button>
               </Link>
           </CardFooter>
