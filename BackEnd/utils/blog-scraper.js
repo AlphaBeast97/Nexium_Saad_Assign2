@@ -1,17 +1,14 @@
 import puppeteer from "puppeteer";
-import chromium from "chrome-aws-lambda";
 
 export const scrapeBlog = async (url) => {
   const browser = await puppeteer.launch({
-    args: chromium.args,
-    executablePath: executablePath || undefined,
-    headless: chromium.headless,
-    defaultViewport: chromium.defaultViewport,
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
 
   try {
-    await page.goto(url, { waitUntil: "domcontentloaded" });
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 15000 });
 
     const result = await page.evaluate(() => {
       const title = document.querySelector("h1")?.innerText || "No Title Found";
@@ -23,11 +20,11 @@ export const scrapeBlog = async (url) => {
       return { title, text: paragraphs };
     });
 
-    await browser.close();
     return result;
   } catch (err) {
     console.error("Scraping failed:", err.message);
-    await browser.close();
     throw err;
+  } finally {
+    await browser.close();
   }
 };
