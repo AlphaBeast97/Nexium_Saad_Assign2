@@ -6,7 +6,7 @@ export function Hero() {
       <div className="flex flex-col-reverse lg:flex-row items-center gap-10 w-full max-w-5xl">
         <div className="w-full max-w-md bg-card rounded-2xl shadow-xl p-8 flex flex-col items-center border border-border transition-colors">
           <h2 className="text-2xl font-semibold mb-4 text-foreground">
-            Paste Your Blog URL
+            Paste Your Blog URL!
           </h2>
           <Form />
         </div>

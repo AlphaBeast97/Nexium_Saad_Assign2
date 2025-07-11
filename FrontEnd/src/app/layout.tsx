@@ -28,12 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col h-full`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col h-full`}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Toaster />
-          <NavBar />
-          <main className="flex-1 flex flex-col">{children}</main>
-          <Footer />
+            <Toaster />
+            <NavBar />
+            <main className="flex-1 flex flex-col">{children}</main>
+            <Footer />
         </ThemeProvider>
       </body>
     </html>

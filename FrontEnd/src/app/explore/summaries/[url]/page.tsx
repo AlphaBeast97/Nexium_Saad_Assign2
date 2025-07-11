@@ -12,10 +12,15 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/Components/ui/button";
 
-// Define the shape of the props, which includes the dynamic route parameter `id`.
+export const metadata = {
+  title: "Nexium Assignment 2",
+  description: "View a single blog summary",
+};
+
 interface SummaryPageProps {
   params: {
     url: string;
+    user: string;
   };
 }
 
@@ -39,7 +44,7 @@ export default async function SummaryPage({ params }: SummaryPageProps) {
 
   try {
     // Fetch the summary data from the API using the provided ID.
-    summary = await GetOneSummary(params.url);
+    summary = await GetOneSummary(params.url, params.user);
     console.log(summary);
   } catch (error) {
     // If the API call fails (e.g., returns a 404), trigger Next.js's not-found mechanism.

@@ -17,13 +17,20 @@ app.use(cors());
 
 // API routes
 app.use("/api/blog/summary", blogRoutes);
-app.use("/api/blog/scrape", scrapeRoute)
+app.use("/api/blog/scrape", scrapeRoute);
 
 // Root route
 app.get("/", (req, res) => {
   res.send("Welcome to the Blog API!");
 });
 
+app.get("*", (req, res) => {
+  res.status(404).json({ error: "Not found" });
+});
+
+app.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 const startServer = async () => {
   if (!MONGO_DB_URL) {
@@ -31,7 +38,7 @@ const startServer = async () => {
     process.exit(1);
   }
   try {
-    // Connect to MongoDB 
+    // Connect to MongoDB
     await mongoose.connect(MONGO_DB_URL);
     console.log("Connected to MongoDB!");
 

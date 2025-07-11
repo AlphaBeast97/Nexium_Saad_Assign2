@@ -4,6 +4,12 @@ import { GetAllSummaries } from "@/lib/api";
 import { ExploreButton } from "@/Components/ExploreButton";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Nexium Assignment 2",
+  description: "Explore Blogs",
+};
+
+
 export default async function Explore() {
   const Summaries = await GetAllSummaries();
   return (
