@@ -32,7 +32,7 @@ export async function GetOneSummary(url: string, user: string) {
       throw new Error("No data received from the server.");
     }
 
-    const getResponse = await axios.get(`${URL}/summary/${req._id}`);
+    const getResponse = await axios.get(`${URL}/summary/${req.id}`);
     const res = getResponse.data;
     if (!res) {
       throw new Error("No data received from the server.");

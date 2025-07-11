@@ -4,9 +4,16 @@ import { Button } from "./ui/button";
 import { ExploreButton } from "./ExploreButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+const URL = "https://nexium-saad-assign2.onrender.com/";
 
 export function Form() {
   const Router = useRouter();
+
+  useEffect(() => {
+    fetch(`${URL}ping`).catch(() => {});
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,12 +24,15 @@ export function Form() {
     const url = (
       e.currentTarget.elements.namedItem("blog-url") as HTMLInputElement
     )?.value;
-    if (url && username) {
+    if (url) {
       toast.loading("Generating Summary!");
       try {
-        const request = {url: url, user: username};
-        Router.push(`/summaries/${request}`); // <-- redirect to /summary page
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        Router.push(
+          `explore/summaries/${encodeURIComponent(
+            url
+          )}?user=${encodeURIComponent(username)}`
+        );
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         toast.error("Failed to fetch summary");
       }
