@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Nexium Assignment 2",
+  description: "View a blog summary",
+};
+
 import { GetOneSummary } from "@/lib/api";
 import {
   Card,
@@ -13,11 +18,6 @@ import { Button } from "@/Components/ui/button";
 import SummaryToastClientWrapper from "@/Components/SummaryPageToast";
 import { CollapsibleBlogText } from "@/Components/CollapsableTextFeild";
 import Image from "next/image";
-
-export const metadata = {
-  title: "Nexium Assignment 2",
-  description: "View a blog summary",
-};
 
 interface SummaryPageProps {
   params: Promise<{ url: string[] }>;

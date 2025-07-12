@@ -1,14 +1,15 @@
-import { BlogCards } from "@/Components/BlogCards";
-import { Card, CardContent, CardHeader, CardTitle } from "@/Components/ui/card";
-import { GetAllSummaries } from "@/lib/api";
-import { ExploreButton } from "@/Components/ExploreButton";
-import Link from "next/link";
-
 export const metadata = {
   title: "Explore Blogs | Nexium Assignment 2",
   description:
     "Browse and discover summarized blogs on a variety of topics. Powered by Next.js, Node.js, MongoDB, and AI.",
 };
+export const dynamic = "force-dynamic";
+
+import { BlogCards } from "@/Components/BlogCards";
+import { Card, CardContent, CardHeader, CardTitle } from "@/Components/ui/card";
+import { GetAllSummaries } from "@/lib/api";
+import { ExploreButton } from "@/Components/ExploreButton";
+import Link from "next/link";
 
 // Ensure this page is always rendered dynamically (never statically at build time)
 export default async function Explore() {
