@@ -3,7 +3,7 @@ export default function About() {
     <div className="flex justify-center items-center bg-background py-8 px-2 min-h-screen transition-colors">
       <div className="bg-card rounded-2xl shadow-xl p-6 sm:p-10 max-w-xl w-full flex flex-col items-center mx-auto border border-border transition-colors">
         <h1 className="text-3xl sm:text-4xl font-bold mb-3 text-foreground">
-          About Us
+          About Me
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground text-center mb-6">
           Welcome to Blog Summarizer! Our mission is to simplify information

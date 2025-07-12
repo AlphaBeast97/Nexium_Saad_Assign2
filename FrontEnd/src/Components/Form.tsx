@@ -25,17 +25,33 @@ export function Form() {
       e.currentTarget.elements.namedItem("blog-url") as HTMLInputElement
     )?.value;
     if (url) {
-      toast.loading("Generating Summary!");
+      const generatingMessages = [
+        "Connecting to the blog...",
+        "Analyzing the content...",
+        "Extracting key points...",
+        "Crafting the perfect summary...",
+        "Almost there...",
+      ];
+
+      let messageIndex = 0;
+      const toastId = toast.loading(generatingMessages[messageIndex]);
+
+      const intervalId = setInterval(() => {
+        messageIndex = (messageIndex + 1) % generatingMessages.length;
+        toast.loading(generatingMessages[messageIndex], { id: toastId });
+      }, 2000);
+
       try {
         Router.push(
           `explore/summaries/${encodeURIComponent(
             url
           )}?user=${encodeURIComponent(username)}`
         );
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // The toast will be dismissed on the next page, so we don't need to explicitly clear the interval here.
       } catch (err) {
-        toast.error("Failed to fetch summary");
-      }
+        clearInterval(intervalId); // Stop the messages on error
+        toast.error("Failed to fetch summary", { id: toastId });
+      } 
       e.currentTarget.reset();
     } else {
       toast.error("Please enter a valid URL");

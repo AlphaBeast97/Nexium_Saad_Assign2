@@ -1,20 +1,16 @@
 import * as React from "react";
 import Link from "next/link";
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
+import { Card, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 // Define the type for a single blog post.
 interface Blog {
   _id: string;
   title: string;
   text: string;
+  img: string;
   url: string;
   summary: string;
   translation: string;
@@ -27,12 +23,6 @@ interface BlogCardsProps {
 }
 
 export function BlogCards({ blogs }: BlogCardsProps) {
-  // Helper function to truncate text to a specified length.
-  const truncateText = (text: string, maxLength: number) => {
-    if (!text || text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + "...";
-  };
-
   // Handle the case where there are no blogs to display.
   if (!blogs || blogs.length === 0) {
     return (
@@ -50,11 +40,22 @@ export function BlogCards({ blogs }: BlogCardsProps) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4">
-      {blogs.map((blog) => (
+      {blogs.slice(0, 10).map((blog) => (
         <Card
           key={blog._id}
           className="flex flex-col overflow-hidden rounded-lg border border-accent bg-background text-card-foreground shadow-md hover:shadow-xl hover:bg-accent hover:text-accent-foreground transition-all duration-300 ease-in-out"
         >
+          {blog.img && (
+            <Image
+              src={blog.img}
+              alt={blog.title}
+              width={400}
+              height={200}
+              className="w-full h-48 object-cover"
+              priority
+              placeholder="empty"
+            />
+          )}
           <CardHeader>
             <CardTitle
               className="text-xl font-semibold leading-tight truncate"
@@ -63,15 +64,15 @@ export function BlogCards({ blogs }: BlogCardsProps) {
               {blog.title}
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex-grow">
-            <p className="text-muted-foreground text-sm">
-              {truncateText(blog.summary, 200)}
-            </p>
-          </CardContent>
           <CardFooter>
-              <Link href={`explore/summaries/${encodeURIComponent(blog.url)}?user=${encodeURIComponent(blog._id)}`} className="w-full">
-                <Button className="w-full">View Summary</Button>
-              </Link>
+            <Link
+              href={`explore/summaries/${encodeURIComponent(
+                blog.url
+              )}?user=${encodeURIComponent(blog._id)}`}
+              className="w-full"
+            >
+              <Button className="w-full">View Summary</Button>
+            </Link>
           </CardFooter>
         </Card>
       ))}

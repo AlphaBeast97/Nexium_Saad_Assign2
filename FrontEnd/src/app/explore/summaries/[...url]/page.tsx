@@ -13,6 +13,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/Components/ui/button";
 import SummaryToastClientWrapper from "@/Components/SummaryPageToast";
 import { CollapsibleBlogText } from "@/Components/CollapsableTextFeild";
+import Image from "next/image";
 
 export const metadata = {
   title: "Nexium Assignment 2",
@@ -29,6 +30,7 @@ interface Summary {
   _id: string;
   text: string;
   title: string;
+  img: string;
   url: string;
   user: string;
   summary: string;
@@ -89,10 +91,23 @@ export default async function SummaryPage({
         </CardHeader>
 
         <CardContent className="space-y-10">
+          {summary.img && (
+            <div className="w-full flex justify-center">
+              <Image
+                src={summary.img}
+                alt={summary.title}
+                width={800}
+                height={450}
+                className="rounded-lg max-h-[450px] object-contain border"
+                priority
+                placeholder="empty"
+              />
+            </div>
+          )}
 
           <div>
             <h3 className="text-xl font-semibold mb-3 border-b pb-2">
-              Summary
+              Summary ✨
             </h3>
             <p className="text-foreground/90 leading-relaxed whitespace-pre-wrap">
               {summary.summary}
@@ -112,7 +127,7 @@ export default async function SummaryPage({
               </p>
             </div>
           )}
-         <CollapsibleBlogText text={summary.text}/>
+          <CollapsibleBlogText text={summary.text} />
         </CardContent>
 
         <CardFooter className="text-xs text-muted-foreground bg-muted/50 py-3 px-6 border-t flex justify-between flex-wrap gap-2">
