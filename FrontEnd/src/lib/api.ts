@@ -1,7 +1,10 @@
+// API utility functions for communicating with the backend
 import axios from "axios";
 
+// Base URL for backend API
 const URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
+// Fetch all blog summaries from the backend
 export async function GetAllSummaries() {
   try {
     const { data } = await axios.get(`${URL}/summary`);
@@ -18,6 +21,7 @@ export async function GetAllSummaries() {
   }
 }
 
+// Scrape and summarize a blog by URL, then fetch its summary
 export async function GetOneSummary(url: string, user: string) {
   try {
     const postResponse = await axios.post(`${URL}/scrape/url`, {

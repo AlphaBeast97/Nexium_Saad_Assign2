@@ -1,5 +1,7 @@
+// Translates a summary to Urdu using the MyMemory API
 export const translateSummary = async (summary) => {
   try {
+    // Call MyMemory API for translation
     const response = await fetch(
       `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
         summary
@@ -10,6 +12,7 @@ export const translateSummary = async (summary) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    // Parse the translation response
     const data = await response.json();
 
     if (data.responseStatus !== 200) {

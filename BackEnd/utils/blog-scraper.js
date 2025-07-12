@@ -1,6 +1,8 @@
 import puppeteer from "puppeteer";
 
+// Scrapes blog content from a given URL using Puppeteer
 export const scrapeBlog = async (url) => {
+  // Launch headless browser
   const browser = await puppeteer.launch({
     headless: "new",
     args: [
@@ -12,6 +14,7 @@ export const scrapeBlog = async (url) => {
       "--no-zygote",
     ],
   });
+  // Open new page
   const page = await browser.newPage();
 
   try {
