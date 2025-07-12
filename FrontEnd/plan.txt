@@ -1,39 +1,50 @@
+
 Assignment 2: Blog Summariser
 
-Detailed Plan:
+Updated Plan & Progress:
 
 1. User Input: ✅
-   - [x] Create a form in the frontend (using ShadCN UI) to accept a blog URL from the user.
-   - [x] Validate the URL format before submission.
+   - [x] Created a form in the frontend (ShadCN UI) to accept a blog URL and optional username.
+   - [x] Validated the URL format before submission.
 
-2. Blog Scraping:
-   - On form submission, send the URL to a backend API route (Next.js API route).
-   - Use a scraping library (e.g., `cheerio` or `jsdom`) to fetch and extract the main text content from the blog page.
-   - Handle errors for invalid or unreachable URLs.
+2. Blog Scraping: ✅
+   - [x] On form submission, send the URL to a backend API route.
+   - [x] Used Puppeteer to fetch and extract the main text, title, and image from the blog page.
+   - [x] Handled errors for invalid or unreachable URLs.
 
-3. Simulated AI Summary:
-   - Implement a static logic function to generate a summary (e.g., extract the first 3-5 sentences or a fixed summary template).
-   - Optionally, highlight key points or headings if available.
+3. AI Summary (Gemini): ✅
+   - [x] Used Gemini 1.5 Flash API to generate a concise summary of the blog content.
+   - [x] Limited summary length and handled large blog posts.
 
-4. Urdu Translation:
-   - Create a simple JavaScript dictionary for common English-to-Urdu word/phrase translations.
-   - Replace words/phrases in the summary using this dictionary.
-   - Ensure the translation logic handles basic grammar and sentence structure.
+4. Urdu Translation (MyMemory): ✅
+   - [x] Used MyMemory API to translate the summary to Urdu.
+   - [x] Handled translation errors and fallbacks.
 
-5. Save Summary in Supabase:
-   - Set up a Supabase project and table for storing summaries (fields: id, url, summary_en, summary_ur, created_at).
-   - Use Supabase client in the backend to insert the summary data.
+5. Save Data in MongoDB: ✅
+   - [x] Used MongoDB Atlas and Mongoose to store full blog text, summaries, translations, and metadata.
+   - [x] Prevented duplicate scraping of the same URL.
 
-6. Save Full Blog Text in MongoDB:
-   - Set up MongoDB (e.g., MongoDB Atlas) and create a collection for full blog texts (fields: id, url, full_text, created_at).
-   - Use a MongoDB client (e.g., `mongoose` or `mongodb` npm package) to save the full blog content.
+6. Frontend UI (ShadCN + Next.js): ✅
+   - [x] Used ShadCN UI components for the form, loading states, and displaying results.
+   - [x] Showed both English and Urdu summaries to the user after processing.
+   - [x] Provided error messages and success notifications (react-hot-toast).
+   - [x] Added theme support (light/dark).
 
-7. Frontend UI (ShadCN):
-   - Use ShadCN UI components for the form, loading states, and displaying results.
-   - Show both the English and Urdu summaries to the user after processing.
-   - Provide error messages and success notifications.
+7. API Integration & Error Handling: ✅
+   - [x] Created robust API utility functions for all backend communication.
+   - [x] Handled all error cases and user feedback in the frontend.
 
-8. Deployment:
-   - Prepare the app for deployment (set up environment variables for Supabase and MongoDB).
-   - Deploy the Next.js app to Vercel.
-   - Test the deployed app for all functionalities.
+8. Deployment: ✅
+   - [x] Deployed backend to Render and frontend to Vercel.
+   - [x] Set up environment variables for MongoDB and APIs.
+   - [x] Tested the deployed app for all functionalities.
+
+9. Documentation & Code Quality: ✅
+   - [x] Added meaningful comments to all major files and functions.
+   - [x] Updated README files for both frontend and backend.
+
+10. Visual Flare (Next Steps):
+   - [ ] Add subtle animations and transitions to UI components.
+   - [ ] Polish the summary/result cards with better visuals and icons.
+   - [ ] Add a loading skeleton for summary fetch.
+   - [ ] Improve mobile responsiveness and accessibility.

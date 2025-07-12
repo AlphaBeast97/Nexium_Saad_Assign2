@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <div className="flex justify-center items-center bg-background py-8 px-2 min-h-screen transition-colors">
@@ -11,6 +13,59 @@ export default function About() {
           concise summaries from the provided URLs. Save time and stay informed
           with ease.
         </p>
+        <div className="mb-6 w-full">
+          <h2 className="text-lg font-semibold text-foreground mb-2 text-center">
+            Major Tech Stack
+          </h2>
+          <div className="flex flex-wrap justify-center items-center gap-6">
+            <div className="flex flex-col items-center">
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                alt="Next.js"
+                width={40}
+                height={40}
+                className="h-10 w-10 mb-1"
+                unoptimized
+              />
+              <span className="text-xs text-muted-foreground">Next.js</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Image
+                src="/tailwind.svg"
+                alt="Tailwind CSS"
+                width={40}
+                height={40}
+                className="h-10 w-10 mb-1"
+                unoptimized
+              />
+              <span className="text-xs text-muted-foreground">
+                Tailwind CSS
+              </span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                alt="Node.js"
+                width={40}
+                height={40}
+                className="h-10 w-10 mb-1"
+                unoptimized
+              />
+              <span className="text-xs text-muted-foreground">Node.js</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                alt="MongoDB"
+                width={40}
+                height={40}
+                className="h-10 w-10 mb-1"
+                unoptimized
+              />
+              <span className="text-xs text-muted-foreground">MongoDB</span>
+            </div>
+          </div>
+        </div>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full justify-center mt-2">
           <a
             href="https://github.com/AlphaBeast97"
