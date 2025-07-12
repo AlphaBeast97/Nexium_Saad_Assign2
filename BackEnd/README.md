@@ -1,13 +1,17 @@
 # Blog Scraper & Summarizer API
 
-This is the backend service for a web application that scrapes blog posts, summarizes them, and provides translations.
+This is the backend service for a web application that scrapes blog posts, summarizes them using Gemini 1.5 Flash, and provides translations using MyMemory API.
 
 ## Features
 
-- Scrape blog post content from a given URL.
-- Summarize the scraped content.
-- Translate the summary.
-- Store and retrieve blog post data from a MongoDB database.
+- Scrape blog posts from a given URL
+- AI-powered summarization using Gemini 1.5 Flash
+- Translate summaries (e.g., to Urdu) using MyMemory API
+- Store blog posts, summaries, and translations in MongoDB
+- Retrieve all blog summaries
+- Retrieve a single blog summary by ID
+- Prevent duplicate scraping of the same URL
+- Basic error handling for invalid requests
 
 ## Getting Started
 

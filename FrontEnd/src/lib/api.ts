@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const URL = process.env.BASE_API_URL;
-if (!URL) {
-  throw new Error("BASE_API_URL is not defined in environment variables.");
-}
+const URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 export async function GetAllSummaries() {
   try {
@@ -23,7 +20,7 @@ export async function GetAllSummaries() {
 
 export async function GetOneSummary(url: string, user: string) {
   try {
-    const postResponse = await axios.post(`${URL}/scrape/url/`, {
+    const postResponse = await axios.post(`${URL}/scrape/url`, {
       url: url,
       user: user,
     });

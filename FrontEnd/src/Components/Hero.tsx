@@ -14,10 +14,9 @@ export function Hero() {
           <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-4 transition-colors">
             Welcome to Blog Summarizer
           </h1>
-          <p className="text-lg text-muted-foreground max-w-xl transition-colors">
-            Instantly get concise and accurate summaries of your favorite blogs.
-            Save time, stay informed, and never miss the key points again.
-          </p>
+            <p className="text-lg text-muted-foreground max-w-xl transition-colors">
+            Effortlessly generate clear, concise summaries of any blog post. Save time, grasp the essentials, and stay up-to-date with just a single click.
+            </p>
         </div>
       </div>
     </div>
