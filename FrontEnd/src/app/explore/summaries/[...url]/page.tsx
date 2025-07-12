@@ -1,5 +1,4 @@
 import { GetOneSummary } from "@/lib/api";
-import { notFound } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -46,23 +45,45 @@ export default async function SummaryPage({
   params,
   searchParams,
 }: SummaryPageProps) {
-  let summary: Summary;
+  let summary: Summary | null = null;
+  let error: string | null = null;
 
-  const currentParams = await params;
-  const currentSearchParams = await searchParams;
-
-  const encodedPathUrl = currentParams.url.join("/");
-  const originalUrl = decodeURIComponent(encodedPathUrl);
-
-  const user = currentSearchParams.user || "";
   try {
-    // Fetch the summary data from the API using the provided ID.
+    const currentParams = await params;
+    const currentSearchParams = await searchParams;
+    const encodedPathUrl = currentParams.url.join("/");
+    const originalUrl = decodeURIComponent(encodedPathUrl);
+    const user = currentSearchParams.user || "";
     summary = await GetOneSummary(originalUrl, user || "");
-  } catch (error) {
-    // If the API call fails (e.g., returns a 404), trigger Next.js's not-found mechanism.
-    console.log(error);
-    notFound();
+  } catch (err) {
+    error =
+      "Failed to load blog summary. It may not exist or there was a network error.";
   }
+
+  if (!summary) {
+    return (
+      <div className="container mx-auto max-w-4xl py-12 px-4 min-h-[calc(100vh-120px)] flex flex-col items-center justify-center">
+        <SummaryToastClientWrapper />
+        <Button asChild variant="ghost" className="mb-6">
+          <Link href="/explore">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Explore
+          </Link>
+        </Button>
+        <Card className="overflow-hidden shadow-lg border border-border p-8 text-center">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold">
+              Summary Not Found
+            </CardTitle>
+            <CardDescription>
+              {error || "No summary data available for this blog."}
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto max-w-4xl py-12 px-4 min-h-[calc(100vh-120px)]">
       <SummaryToastClientWrapper />
