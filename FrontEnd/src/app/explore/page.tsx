@@ -5,10 +5,13 @@ import { ExploreButton } from "@/Components/ExploreButton";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Nexium Assignment 2",
-  description: "Explore Blogs",
+  title: "Explore Blogs | Nexium Assignment 2",
+  description:
+    "Browse and discover summarized blogs on a variety of topics. Powered by Next.js, Node.js, MongoDB, and AI.",
 };
 
+// Ensure this page is always rendered dynamically (never statically at build time)
+export const dynamic = "force-dynamic";
 
 export default async function Explore() {
   const Summaries = await GetAllSummaries();

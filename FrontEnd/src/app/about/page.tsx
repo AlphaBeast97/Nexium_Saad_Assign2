@@ -1,5 +1,11 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "About | Nexium Assignment 2",
+  description:
+    "Learn about the Nexium Assignment 2 project, its tech stack, and the team behind the blog summarizer app.",
+};
+
 export default function About() {
   return (
     <div className="flex justify-center items-center bg-background py-8 px-2 min-h-screen transition-colors">
