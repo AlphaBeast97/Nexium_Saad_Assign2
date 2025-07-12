@@ -48,6 +48,7 @@ export function Form() {
           )}?user=${encodeURIComponent(username)}`
         );
         // The toast will be dismissed on the next page, so we don't need to explicitly clear the interval here.
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         clearInterval(intervalId);
         toast.error("Failed to fetch summary", { id: toastId });
