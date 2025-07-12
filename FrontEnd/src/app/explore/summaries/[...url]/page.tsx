@@ -55,7 +55,7 @@ export default async function SummaryPage({
     const originalUrl = decodeURIComponent(encodedPathUrl);
     const user = currentSearchParams.user || "";
     summary = await GetOneSummary(originalUrl, user || "");
-  } catch (err) {
+  } catch {
     error =
       "Failed to load blog summary. It may not exist or there was a network error.";
   }
