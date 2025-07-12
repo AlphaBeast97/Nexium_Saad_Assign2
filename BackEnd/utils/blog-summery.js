@@ -8,15 +8,16 @@ export const blogSum = async (text) => {
     }
     // Ensure the text is not too long for the model's input limit.
     const maxLength = 30000; // A safe character limit
-    const truncatedText = text.length > maxLength ? text.substring(0, maxLength) : text;
+    const truncatedText =
+      text.length > maxLength ? text.substring(0, maxLength) : text;
 
     const genAI = new GoogleGenerativeAI(KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt = `Please summarize the following text in 4 to 5 lines:\n\n${truncatedText}`;
+    const prompt = `Please summarize the following text and return a max of 500 characters :\n\n${truncatedText}`;
 
     const result = await model.generateContent(prompt);
-    const response = await result.response;
+    const response = result.response;
     const summary = response.text();
 
     return summary;

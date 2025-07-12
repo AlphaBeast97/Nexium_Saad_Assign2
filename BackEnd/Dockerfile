@@ -1,31 +1,20 @@
-FROM node:22
+# Stage 1: Builder for Node.js dependencies
+FROM node:22 AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
 
-RUN apt-get update && apt-get install -y \
-    chromium \
-    fonts-liberation \
-    libappindicator3-1 \
-    libasound2 \
-    libatk-bridge2.0-0 \
-    libatk1.0-0 \
-    libcups2 \
-    libdbus-1-3 \
-    libgdk-pixbuf2.0-0 \
-    libnspr4 \
-    libnss3 \
-    libx11-xcb1 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxrandr2 \
-    xdg-utils \
-    --no-install-recommends && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# Stage 2: Production image with Puppeteer's pre-built Chrome
+# Using the :latest tag of the official Puppeteer image for broadest compatibility
+FROM ghcr.io/puppeteer/puppeteer:latest AS production
+# The :latest tag typically includes the latest stable Node.js and Chrome,
+# which should be compatible with your Puppeteer v24.12.1 (Chrome 138).
 
 WORKDIR /app
 
+COPY --from=builder /app/node_modules ./node_modules
 COPY . .
-
-RUN npm install
 
 EXPOSE 3001
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
