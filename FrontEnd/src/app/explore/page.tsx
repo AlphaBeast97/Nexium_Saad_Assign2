@@ -11,8 +11,6 @@ export const metadata = {
 };
 
 // Ensure this page is always rendered dynamically (never statically at build time)
-export const dynamic = "force-dynamic";
-
 export default async function Explore() {
   const Summaries = await GetAllSummaries();
   return (
