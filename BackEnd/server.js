@@ -14,12 +14,13 @@ const MONGO_DB_URL = process.env.MONGO_DB_URL;
 // Middleware for parsing JSON and enabling CORS
 app.use(express.json());
 
-app.use(cors());
-// {
-//     origin: ["http://localhost:3001", "https://nexium-saad-assign2.vercel.app"],
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     credentials: true,
-//   }
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://nexium-saad-assign2.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+  })
+);
 // API routes
 app.use("/api/blog/summary", blogRoutes);
 app.use("/api/blog/scrape", scrapeRoute);
