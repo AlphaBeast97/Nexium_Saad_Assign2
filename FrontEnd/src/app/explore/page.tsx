@@ -13,7 +13,13 @@ import Link from "next/link";
 
 // Ensure this page is always rendered dynamically (never statically at build time)
 export default async function Explore() {
-  const Summaries = await GetAllSummaries();
+  let Summaries = [];
+  let error = null;
+  try {
+    Summaries = await GetAllSummaries();
+  } catch {
+    error = "Failed to load blog summaries. Please try again later.";
+  }
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-120px)] p-4">
       <Card className="w-full max-w-6xl shadow-xl border bg-card">
@@ -28,7 +34,11 @@ export default async function Explore() {
           </Link>
         </CardHeader>
         <CardContent>
-          <BlogCards blogs={Summaries} />
+          {error ? (
+            <div className="text-red-500 text-center py-8">{error}</div>
+          ) : (
+            <BlogCards blogs={Summaries} />
+          )}
         </CardContent>
       </Card>
     </div>
