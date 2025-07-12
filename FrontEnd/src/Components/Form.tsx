@@ -49,9 +49,9 @@ export function Form() {
         );
         // The toast will be dismissed on the next page, so we don't need to explicitly clear the interval here.
       } catch (err) {
-        clearInterval(intervalId); // Stop the messages on error
+        clearInterval(intervalId);
         toast.error("Failed to fetch summary", { id: toastId });
-      } 
+      }
       e.currentTarget.reset();
     } else {
       toast.error("Please enter a valid URL");
